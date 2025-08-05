@@ -10,16 +10,24 @@ export const PROGRAM_ID = new PublicKey("BV7ZPynu7mnNKP2RNhVsqxXSfEsuZLcx1xfvsZ5
 export const connection = new Connection("https://api.devnet.solana.com")
 export const commitment: Commitment = "confirmed"
 
-export const signerKp = loadKeypair(path.join(__dirname, "..", "keys", "deployer.json"));
-export const signer = new Wallet(signerKp);
-
-export const provider = new AnchorProvider(connection, signer, {
-  preflightCommitment: commitment,
-});
-
-export const PaymentGpuMarketplaceProgram = new Program(IDL, PROGRAM_ID, provider);
+export const scaffoldProgram = (keyFile: string) => {
+  const signerKp = loadKeypair(path.join(__dirname, "..", "keys", keyFile));
+  const signer = new Wallet(signerKp);
+  const provider = new AnchorProvider(connection, signer, {
+    preflightCommitment: commitment,
+  });
+  
+  const PaymentGpuMarketplaceProgram = new Program(IDL, PROGRAM_ID, provider);
+  return {
+    signer,
+    provider,
+    PaymentGpuMarketplaceProgram,
+    signerKp,
+  }
+}
 
 export async function sendTransaction(
+  provider: AnchorProvider,
   ix:
       | TransactionInstruction
       | TransactionInstruction[],

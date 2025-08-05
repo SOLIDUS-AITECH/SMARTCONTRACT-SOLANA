@@ -1,5 +1,5 @@
 import { Wallet } from "@coral-xyz/anchor";
-import { initialize, loadKeypair, PaymentGpuMarketplaceProgram, sendTransaction } from "../sdk";
+import { initialize, loadKeypair, scaffoldProgram, sendTransaction } from "../sdk";
 import path from "node:path";
 import { PublicKey } from "@solana/web3.js";
 import { getAssociatedTokenAddressSync } from "@solana/spl-token";
@@ -12,7 +12,8 @@ async function main() {
   const ownerWallet = new Wallet(ownerKp);
   const withdrawSignerKp = loadKeypair(path.join(__dirname, "..", "keys", "withdraw_signer.json"));
   const withdrawSignerWallet = new Wallet(withdrawSignerKp);
-  
+  const { PaymentGpuMarketplaceProgram, provider } = scaffoldProgram("deployer.json");
+
   const AITECH_TOKEN = new PublicKey("8zEGAKEeggtp3uT5QiUHiVksMJ2JzCHm465oKZzkHNU");
   const DEPLOYER_AITECH_TOKEN_ACC = getAssociatedTokenAddressSync(AITECH_TOKEN, deployerKp.publicKey);
   const FEE_WALLET = DEPLOYER_AITECH_TOKEN_ACC;
@@ -40,7 +41,7 @@ async function main() {
     initializeArgs,
   );
 
-  await sendTransaction(initializeIx, { loggerIdentity: "initialize" }, deployerWallet);
+  await sendTransaction(provider, initializeIx, { loggerIdentity: "initialize" }, deployerWallet);
 }
 
 main()
