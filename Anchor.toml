@@ -1,0 +1,42 @@
+[toolchain]
+# anchor_version = "0.29.0"    # `anchor-cli` version to use(requires `avm`)
+# solana_version = "1.17.0"    # Solana version to use(applies to all Solana tools)
+# rustc = "1.81"
+
+[features]
+seeds = false
+skip-lint = false
+
+[programs.localnet]
+degens_fifty_fifty_game = "6YzJfFRp7JjFFagA3AZDDk95o44c4r5eax7EXLwuhKz2"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "Localnet"
+wallet = "keys/deployer.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/*.test.ts"
+
+
+# Token program
+[[test.genesis]]
+address = "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+program = "dump_programs/token_program.so"
+
+# Associated Token program
+[[test.genesis]]
+address = "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+program = "dump_programs/associate_token_program.so"
+
+# Token Metadata program
+[[test.genesis]]
+address = "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s"
+program = "dump_programs/metaplex.so"
+
+# Raydium program
+[[test.genesis]]
+address = "CPMDWBwJDtYax9qW7AyRuVC19Cc4L4Vcy4n2BHAbHkCW"
+program = "dump_programs/raydium_cp_swap.so"

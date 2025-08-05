@@ -1,0 +1,32 @@
+[package]
+name = "payment-gpu-marketplace"
+version = "0.1.0"
+description = "This contract is used to deposit and withdraw AITech token for payment purpose."
+edition = "2021"
+authors = ["Solidus AI Tech (aitech.io)"]
+
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "payment_gpu_marketplace"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+enable-log = []
+default = ["enable-log"]
+
+[dependencies]
+anchor-lang = { version = "0.29.0", features = ["init-if-needed"] }
+anchor-spl = { version = "0.29.0", features = ["metadata"] }
+spl-token = { version = "4.0.0", features = ["no-entrypoint"] }
+spl-math = { version = "0.2", features = ["no-entrypoint"] }
+spl-memo = "4.0.0"
+borsh = ">=0.9, <0.11"
+raydium-cp-swap = { git = "https://github.com/raydium-io/raydium-cp-swap", rev = "87685cf221e7d0b06419c6c750bd963b6780dca9", features = [
+    "no-entrypoint",
+    "cpi",
+    "devnet"
+] }
