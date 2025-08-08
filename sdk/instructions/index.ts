@@ -14,4 +14,3 @@ export * from "./set_withdraw_signer";
 export * from "./unpause";
 export * from "./update_config";
 export * from "./withdraw";
-export * from "./setRouter";

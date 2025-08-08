@@ -135,12 +135,6 @@ pub mod payment_gpu_marketplace {
 		set_token::handler(ctx)
 	}
 
-	#[access_control(SetRouter::only_owner(&ctx))]
-	#[access_control(SetRouter::when_paused(&ctx))]
-	pub fn set_router(ctx: Context<SetRouter>) -> Result<()> {
-		set_router::handler(ctx)
-	}
-
 	#[access_control(EmergencyWithdraw::only_owner(&ctx))]
 	pub fn emergency_withdraw(ctx: Context<EmergencyWithdraw>, amount: u64) -> Result<()> {
 		emergency_withdraw::handler(ctx, amount)
@@ -159,14 +153,12 @@ pub mod payment_gpu_marketplace {
 	pub fn withdraw(
 		ctx: Context<WithdrawCtx>,
 		amount: u64,
-		amount_in_maximum: u64,
 		withdraw_request_id: u64,
 		withdraw_request_timestamp: u64,
 	) -> Result<()> {
 		withdraw::handler(
 			ctx,
 			amount,
-			amount_in_maximum,
 			withdraw_request_id,
 			withdraw_request_timestamp,
 		)

@@ -61,7 +61,6 @@ describe("03. Payment: withdraw unit test", async function () {
       WITHDRAW_SIGNER_KEYPAIR.publicKey,
       {
         amount: new BN(amount.toString()),
-        amountInMaximum: new BN(0),
         withdrawRequestId: new BN(withdrawRequestId),
         withdrawRequestTimestamp: new BN(withdrawRequestTimestamp),
       }
@@ -111,7 +110,6 @@ describe("03. Payment: withdraw unit test", async function () {
       WITHDRAW_SIGNER_KEYPAIR.publicKey,
       {
         amount: new BN(amount.toString()),
-        amountInMaximum: new BN(0),
         withdrawRequestId: new BN(withdrawRequestId),
         withdrawRequestTimestamp: new BN(withdrawRequestTimestamp),
       }
@@ -153,7 +151,6 @@ describe("03. Payment: withdraw unit test", async function () {
       WITHDRAW_SIGNER_KEYPAIR.publicKey,
       {
         amount: amount,
-        amountInMaximum: new BN(0),
         withdrawRequestId: new BN(withdrawRequestId),
         withdrawRequestTimestamp: new BN(withdrawRequestTimestamp),
       }
@@ -174,7 +171,6 @@ describe("03. Payment: withdraw unit test", async function () {
       WITHDRAW_SIGNER_KEYPAIR.publicKey,
       {
         amount: amount,
-        amountInMaximum: new BN(0),
         withdrawRequestId: new BN(withdrawRequestId),
         withdrawRequestTimestamp: new BN(withdrawRequestTimestamp),
       }
@@ -204,7 +200,6 @@ describe("03. Payment: withdraw unit test", async function () {
       WITHDRAW_SIGNER_KEYPAIR.publicKey,
       {
         amount: amount,
-        amountInMaximum: new BN(0),
         withdrawRequestId: new BN(withdrawRequestId),
         withdrawRequestTimestamp: new BN(withdrawRequestTimestamp),
       }
@@ -226,7 +221,6 @@ describe("03. Payment: withdraw unit test", async function () {
       OWNER_KEYPAIR.publicKey,
       {
         amount: amount,
-        amountInMaximum: new BN(0),
         withdrawRequestId: new BN(withdrawRequestId),
         withdrawRequestTimestamp: new BN(withdrawRequestTimestamp),
       }
@@ -250,7 +244,6 @@ describe("03. Payment: withdraw unit test", async function () {
       OWNER_KEYPAIR.publicKey,
       {
         amount: amount,
-        amountInMaximum: new BN(0),
         withdrawRequestId: new BN(withdrawRequestId),
         withdrawRequestTimestamp: new BN(withdrawRequestTimestamp),
       }
@@ -313,7 +306,6 @@ describe("03. Payment: withdraw unit test", async function () {
       WITHDRAW_SIGNER_KEYPAIR.publicKey,
       {
         amount: new BN(amount.toString()),
-        amountInMaximum: new BN(0),
         withdrawRequestId: new BN(withdrawRequestId),
         withdrawRequestTimestamp: new BN(withdrawRequestTimestamp),
       }

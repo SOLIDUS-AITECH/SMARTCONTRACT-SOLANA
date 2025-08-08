@@ -1,5 +1,5 @@
-import fs from 'node:fs';
-import { Keypair } from '@solana/web3.js';
+import fs from "node:fs";
+import { Keypair } from "@solana/web3.js";
 
 export function u16ToBytes(num: number) {
     const arr = new ArrayBuffer(2);

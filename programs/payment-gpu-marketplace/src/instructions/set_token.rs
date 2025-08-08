@@ -4,11 +4,13 @@ use crate::{
 	errors::PaymentGpuMarketplaceErrorCode,
 	impl_only_owner, impl_when_paused,
 	states::config::Config,
-	utils::{create_token_account, AUTH_SEED, CONFIG_SEED, PROGRAM_TOKEN_VAULT_SEED},
+	utils::{
+		create_token_account, transfer_from_pool_vault_to_user, AUTH_SEED, CONFIG_SEED,
+		PROGRAM_TOKEN_VAULT_SEED,
+	},
 };
 use anchor_lang::prelude::*;
 use anchor_spl::token::{Mint, Token, TokenAccount};
-use raydium_cp_swap::utils::transfer_from_pool_vault_to_user;
 
 #[derive(Accounts)]
 pub struct SetToken<'info> {

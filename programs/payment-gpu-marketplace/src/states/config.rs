@@ -27,10 +27,6 @@ pub struct Config {
 	pub aitech_token: Pubkey,
 	pub fee_wallet: Pubkey,
 	pub staking_wallet: Pubkey,
-
-	// swap router
-	pub swap_program: Pubkey,
-	pub pool_state: Pubkey,
 }
 
 impl Config {

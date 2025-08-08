@@ -7,7 +7,7 @@ export async function setBurnRate(
     program: Program<PaymentGpuMarketplace>,
     signer: PublicKey,
     args: {
-        burnRate: number,
+        burnRate: number;
     }
 ) {
     const configPda = getConfigPda(program.programId)[0];

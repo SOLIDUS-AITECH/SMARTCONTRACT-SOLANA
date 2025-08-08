@@ -119,7 +119,7 @@ export const boilerPlateReduction = (
         ).to.be.fulfilled;
 
     const expectIxToFailWithError = async (
-        ix:  
+        ix:
             | TransactionInstruction
             | Promise<TransactionInstruction>
             | TransactionInstruction[]

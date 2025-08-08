@@ -49,22 +49,6 @@ export type PaymentGpuMarketplace = {
           "name": "systemProgram",
           "isMut": false,
           "isSigner": false
-        },
-        {
-          "name": "poolState",
-          "isMut": false,
-          "isSigner": false,
-          "docs": [
-            "CHECKED Raydium pool state"
-          ]
-        },
-        {
-          "name": "cpSwapProgram",
-          "isMut": false,
-          "isSigner": false,
-          "docs": [
-            "CHECKED Raydium program"
-          ]
         }
       ],
       "args": [
@@ -429,38 +413,6 @@ export type PaymentGpuMarketplace = {
       "args": []
     },
     {
-      "name": "setRouter",
-      "accounts": [
-        {
-          "name": "signer",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "config",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "poolState",
-          "isMut": false,
-          "isSigner": false,
-          "docs": [
-            "CHECKED Raydium pool state"
-          ]
-        },
-        {
-          "name": "cpSwapProgram",
-          "isMut": false,
-          "isSigner": false,
-          "docs": [
-            "CHECKED Raydium program"
-          ]
-        }
-      ],
-      "args": []
-    },
-    {
       "name": "emergencyWithdraw",
       "accounts": [
         {
@@ -628,75 +580,11 @@ export type PaymentGpuMarketplace = {
           "name": "systemProgram",
           "isMut": false,
           "isSigner": false
-        },
-        {
-          "name": "tokenOut",
-          "isMut": true,
-          "isSigner": false,
-          "isOptional": true
-        },
-        {
-          "name": "tokenOutProgram",
-          "isMut": false,
-          "isSigner": false,
-          "isOptional": true
-        },
-        {
-          "name": "poolVaultAndLpMintAuthority",
-          "isMut": false,
-          "isSigner": false,
-          "isOptional": true
-        },
-        {
-          "name": "poolState",
-          "isMut": true,
-          "isSigner": false,
-          "isOptional": true
-        },
-        {
-          "name": "ammConfig",
-          "isMut": false,
-          "isSigner": false,
-          "isOptional": true
-        },
-        {
-          "name": "observationState",
-          "isMut": true,
-          "isSigner": false,
-          "isOptional": true
-        },
-        {
-          "name": "aitechTokenVault",
-          "isMut": true,
-          "isSigner": false,
-          "isOptional": true,
-          "docs": [
-            "The vault token account for input meme token"
-          ]
-        },
-        {
-          "name": "tokenOutVault",
-          "isMut": true,
-          "isSigner": false,
-          "isOptional": true,
-          "docs": [
-            "The vault token account for wsol"
-          ]
-        },
-        {
-          "name": "cpSwapProgram",
-          "isMut": false,
-          "isSigner": false,
-          "isOptional": true
         }
       ],
       "args": [
         {
           "name": "amount",
-          "type": "u64"
-        },
-        {
-          "name": "amountInMaximum",
           "type": "u64"
         },
         {
@@ -766,14 +654,6 @@ export type PaymentGpuMarketplace = {
           },
           {
             "name": "stakingWallet",
-            "type": "publicKey"
-          },
-          {
-            "name": "swapProgram",
-            "type": "publicKey"
-          },
-          {
-            "name": "poolState",
             "type": "publicKey"
           }
         ]
@@ -1072,22 +952,6 @@ export const IDL: PaymentGpuMarketplace = {
           "name": "systemProgram",
           "isMut": false,
           "isSigner": false
-        },
-        {
-          "name": "poolState",
-          "isMut": false,
-          "isSigner": false,
-          "docs": [
-            "CHECKED Raydium pool state"
-          ]
-        },
-        {
-          "name": "cpSwapProgram",
-          "isMut": false,
-          "isSigner": false,
-          "docs": [
-            "CHECKED Raydium program"
-          ]
         }
       ],
       "args": [
@@ -1452,38 +1316,6 @@ export const IDL: PaymentGpuMarketplace = {
       "args": []
     },
     {
-      "name": "setRouter",
-      "accounts": [
-        {
-          "name": "signer",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "config",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "poolState",
-          "isMut": false,
-          "isSigner": false,
-          "docs": [
-            "CHECKED Raydium pool state"
-          ]
-        },
-        {
-          "name": "cpSwapProgram",
-          "isMut": false,
-          "isSigner": false,
-          "docs": [
-            "CHECKED Raydium program"
-          ]
-        }
-      ],
-      "args": []
-    },
-    {
       "name": "emergencyWithdraw",
       "accounts": [
         {
@@ -1651,75 +1483,11 @@ export const IDL: PaymentGpuMarketplace = {
           "name": "systemProgram",
           "isMut": false,
           "isSigner": false
-        },
-        {
-          "name": "tokenOut",
-          "isMut": true,
-          "isSigner": false,
-          "isOptional": true
-        },
-        {
-          "name": "tokenOutProgram",
-          "isMut": false,
-          "isSigner": false,
-          "isOptional": true
-        },
-        {
-          "name": "poolVaultAndLpMintAuthority",
-          "isMut": false,
-          "isSigner": false,
-          "isOptional": true
-        },
-        {
-          "name": "poolState",
-          "isMut": true,
-          "isSigner": false,
-          "isOptional": true
-        },
-        {
-          "name": "ammConfig",
-          "isMut": false,
-          "isSigner": false,
-          "isOptional": true
-        },
-        {
-          "name": "observationState",
-          "isMut": true,
-          "isSigner": false,
-          "isOptional": true
-        },
-        {
-          "name": "aitechTokenVault",
-          "isMut": true,
-          "isSigner": false,
-          "isOptional": true,
-          "docs": [
-            "The vault token account for input meme token"
-          ]
-        },
-        {
-          "name": "tokenOutVault",
-          "isMut": true,
-          "isSigner": false,
-          "isOptional": true,
-          "docs": [
-            "The vault token account for wsol"
-          ]
-        },
-        {
-          "name": "cpSwapProgram",
-          "isMut": false,
-          "isSigner": false,
-          "isOptional": true
         }
       ],
       "args": [
         {
           "name": "amount",
-          "type": "u64"
-        },
-        {
-          "name": "amountInMaximum",
           "type": "u64"
         },
         {
@@ -1789,14 +1557,6 @@ export const IDL: PaymentGpuMarketplace = {
           },
           {
             "name": "stakingWallet",
-            "type": "publicKey"
-          },
-          {
-            "name": "swapProgram",
-            "type": "publicKey"
-          },
-          {
-            "name": "poolState",
             "type": "publicKey"
           }
         ]

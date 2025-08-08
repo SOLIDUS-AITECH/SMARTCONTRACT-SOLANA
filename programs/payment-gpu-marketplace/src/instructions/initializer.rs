@@ -7,7 +7,6 @@ use crate::{
 };
 use anchor_lang::prelude::*;
 use anchor_spl::token::{Mint, Token, TokenAccount};
-use raydium_cp_swap::program::RaydiumCpSwap;
 
 #[derive(Accounts)]
 pub struct Initialize<'info> {
@@ -56,11 +55,6 @@ pub struct Initialize<'info> {
 
 	pub token_program: Program<'info, Token>,
 	pub system_program: Program<'info, System>,
-
-	/// CHECKED Raydium pool state
-	pub pool_state: UncheckedAccount<'info>,
-	/// CHECKED Raydium program
-	pub cp_swap_program: Program<'info, RaydiumCpSwap>,
 }
 
 pub fn handler(
@@ -88,8 +82,6 @@ pub fn handler(
 		aitech_token: ctx.accounts.aitech_token.key(),
 		fee_wallet: ctx.accounts.fee_wallet.key(),
 		staking_wallet: ctx.accounts.staking_wallet.key(),
-		swap_program: ctx.accounts.cp_swap_program.key(),
-		pool_state: ctx.accounts.pool_state.key(),
 	});
 
 	// create `vault` account

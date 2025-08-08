@@ -1404,7 +1404,6 @@ dependencies = [
  "anchor-lang",
  "anchor-spl",
  "borsh 0.10.4",
- "raydium-cp-swap",
  "spl-math",
  "spl-memo",
  "spl-token",
@@ -1595,22 +1594,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6f97cdb2a36ed4183de61b2f824cc45c9f1037f28afe0a322e9fff4c108b5aaa"
 dependencies = [
  "rand_core 0.6.4",
-]
-
-[[package]]
-name = "raydium-cp-swap"
-version = "0.1.0"
-source = "git+https://github.com/raydium-io/raydium-cp-swap?rev=87685cf221e7d0b06419c6c750bd963b6780dca9#87685cf221e7d0b06419c6c750bd963b6780dca9"
-dependencies = [
- "anchor-lang",
- "anchor-spl",
- "arrayref",
- "bytemuck",
- "solana-security-txt",
- "spl-math",
- "spl-memo",
- "spl-token",
- "uint",
 ]
 
 [[package]]

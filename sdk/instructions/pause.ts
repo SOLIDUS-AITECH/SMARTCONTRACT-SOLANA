@@ -5,7 +5,7 @@ import { getConfigPda } from "../pda";
 
 export async function pause(
     program: Program<PaymentGpuMarketplace>,
-    signer: PublicKey,
+    signer: PublicKey
 ) {
     const configPda = getConfigPda(program.programId)[0];
 

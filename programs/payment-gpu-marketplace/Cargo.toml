@@ -25,8 +25,3 @@ spl-token = { version = "4.0.0", features = ["no-entrypoint"] }
 spl-math = { version = "0.2", features = ["no-entrypoint"] }
 spl-memo = "4.0.0"
 borsh = ">=0.9, <0.11"
-raydium-cp-swap = { git = "https://github.com/raydium-io/raydium-cp-swap", rev = "87685cf221e7d0b06419c6c750bd963b6780dca9", features = [
-    "no-entrypoint",
-    "cpi",
-    "devnet"
-] }

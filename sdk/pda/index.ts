@@ -31,7 +31,10 @@ export function getConfigPda(programId: PublicKey): [PublicKey, number] {
     return [address, bump];
 }
 
-export function getProgramTokenVaultPda(programId: PublicKey, aitechToken: PublicKey): [PublicKey, number] {
+export function getProgramTokenVaultPda(
+    programId: PublicKey,
+    aitechToken: PublicKey
+): [PublicKey, number] {
     const [address, bump] = PublicKey.findProgramAddressSync(
         [PROGRAM_TOKEN_VAULT_SEED, aitechToken.toBuffer()],
         programId
@@ -39,9 +42,17 @@ export function getProgramTokenVaultPda(programId: PublicKey, aitechToken: Publi
     return [address, bump];
 }
 
-export function getWithdrawRequestPda(programId: PublicKey, signer: PublicKey, withdrawRequestId: anchor.BN): [PublicKey, number] {
+export function getWithdrawRequestPda(
+    programId: PublicKey,
+    signer: PublicKey,
+    withdrawRequestId: anchor.BN
+): [PublicKey, number] {
     const [address, bump] = PublicKey.findProgramAddressSync(
-        [WITHDRAW_REQUEST_SEED, signer.toBuffer(), u64ToBytes(BigInt(withdrawRequestId.toString()))],
+        [
+            WITHDRAW_REQUEST_SEED,
+            signer.toBuffer(),
+            u64ToBytes(BigInt(withdrawRequestId.toString())),
+        ],
         programId
     );
     return [address, bump];
