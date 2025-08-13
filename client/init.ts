@@ -4,6 +4,8 @@ import {
     loadKeypair,
     scaffoldProgram,
     sendTransaction,
+    unpause,
+    updateConfig,
 } from "../sdk";
 import path from "node:path";
 import { PublicKey } from "@solana/web3.js";
@@ -14,7 +16,6 @@ async function main() {
     const deployerKp = loadKeypair(
         path.join(__dirname, "..", "keys", "deployer.json")
     );
-    const deployerWallet = new Wallet(deployerKp);
     const ownerKp = loadKeypair(
         path.join(__dirname, "..", "keys", "owner.json")
     );
@@ -24,7 +25,7 @@ async function main() {
     );
     const withdrawSignerWallet = new Wallet(withdrawSignerKp);
     const { PaymentGpuMarketplaceProgram, provider } =
-        scaffoldProgram("deployer.json");
+        scaffoldProgram("owner.json");
 
     const AITECH_TOKEN = new PublicKey(
         "8zEGAKEeggtp3uT5QiUHiVksMJ2JzCHm465oKZzkHNU"
@@ -48,18 +49,30 @@ async function main() {
 
     const { instruction: initializeIx } = await initialize(
         PaymentGpuMarketplaceProgram,
-        deployerKp.publicKey,
+        ownerKp.publicKey,
         AITECH_TOKEN,
         FEE_WALLET,
         STAKING_WALLET,
         initializeArgs
     );
 
+    const { instruction: updateConfigIx } = await updateConfig(PaymentGpuMarketplaceProgram, ownerKp.publicKey, {
+        feeRate: initializeArgs.feeRate,
+        stakingRate: initializeArgs.stakingRate,
+        burnRate: initializeArgs.burnRate,
+        minimumWithdraw: initializeArgs.minimumWithdraw,
+        maximumWithdraw: initializeArgs.maximumWithdraw,
+        feeWallet: FEE_WALLET,
+        stakingWallet: STAKING_WALLET,
+    });
+
+    const { instruction: unPauseIx } = await unpause(PaymentGpuMarketplaceProgram, ownerKp.publicKey);
+
     await sendTransaction(
         provider,
-        initializeIx,
+        [initializeIx, updateConfigIx, unPauseIx],
         { loggerIdentity: "initialize" },
-        deployerWallet.payer
+        [ownerWallet.payer]
     );
 }
 

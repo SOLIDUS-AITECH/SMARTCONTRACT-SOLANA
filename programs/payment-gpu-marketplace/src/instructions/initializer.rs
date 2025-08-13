@@ -71,7 +71,7 @@ pub fn handler(
 	ctx.accounts.config.set_inner(Config {
 		authority_bump: ctx.bumps.authority,
 		program_token_vault_bump: ctx.bumps.program_token_vault,
-		paused: false,
+		paused: true,
 		fee_rate,
 		staking_rate,
 		burn_rate,

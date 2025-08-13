@@ -125,7 +125,7 @@ describe("01. Payment:settings test", async function () {
         });
 
         it("TC-063: initialize success", async () => {
-            const { instruction, configPda: configPda_ } = await initialize(
+            const { instruction: initializeIx, configPda: configPda_ } = await initialize(
                 PaymentContract,
                 OWNER_KEYPAIR.publicKey,
                 AITECH_TOKEN.publicKey,
@@ -133,7 +133,20 @@ describe("01. Payment:settings test", async function () {
                 stakingWallet.address,
                 initializeArgs
             );
-            await expectIxToSucceed(instruction, [OWNER_KEYPAIR]);
+
+            const { instruction: updateConfigIx } = await updateConfig(PaymentContract, OWNER_KEYPAIR.publicKey, {
+                feeRate: initializeArgs.feeRate,
+                stakingRate: initializeArgs.stakingRate,
+                burnRate: initializeArgs.burnRate,
+                minimumWithdraw: initializeArgs.minimumWithdraw,
+                maximumWithdraw: initializeArgs.maximumWithdraw,
+                feeWallet: feeWallet.address,
+                stakingWallet: stakingWallet.address,
+            });
+
+            const { instruction: unPauseIx } = await unpause(PaymentContract, OWNER_KEYPAIR.publicKey);
+
+            await expectIxToSucceed([initializeIx, updateConfigIx, unPauseIx], [OWNER_KEYPAIR]);
 
             configPda = configPda_;
             configData = await PaymentContract.account.config.fetch(configPda);
