@@ -4,7 +4,8 @@
         "lint": "prettier */*.js \"*/**/*{.js,.ts}\" --check",
         "test": "anchor test --provider.cluster localnet",
         "build": "anchor build && cp target/types/payment_gpu_marketplace.ts sdk/payment_gpu_marketplace.ts",
-        "deploy": "bin/solana-deploy.sh"
+        "deploy": "bin/solana-deploy.sh",
+        "script:emergency-withdraw": "ts-node client/withdraw.ts"
     },
     "dependencies": {
         "@coral-xyz/anchor": "^0.29.0",

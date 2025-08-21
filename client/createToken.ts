@@ -3,13 +3,10 @@ import {
     getOrCreateAssociatedTokenAccount,
     mintTo,
 } from "@solana/spl-token";
-import { connection, loadKeypair } from "../sdk";
-import path from "node:path";
+import { AITECH_TOKEN, connection, loadKeypair } from "../sdk";
 import assert from "node:assert";
+import path from "node:path";
 
-const AITECH_TOKEN = loadKeypair(
-    path.join(__dirname, "..", "keys", "aitech_token.json")
-);
 const DEPLOYER_WALLET = loadKeypair(
     path.join(__dirname, "..", "keys", "deployer.json")
 );

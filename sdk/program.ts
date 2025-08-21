@@ -18,6 +18,10 @@ export const PROGRAM_ID = new PublicKey(
 export const connection = new Connection("https://api.devnet.solana.com");
 export const commitment: Commitment = "confirmed";
 
+export const AITECH_TOKEN = loadKeypair(
+    path.join(__dirname, "..", "keys", "aitech_token.json")
+);
+
 export const scaffoldProgram = (keyFile: string) => {
     const signerKp = loadKeypair(path.join(__dirname, "..", "keys", keyFile));
     const signer = new Wallet(signerKp);
@@ -38,7 +42,8 @@ export async function sendTransaction(
     provider: AnchorProvider,
     ix: TransactionInstruction | TransactionInstruction[],
     { loggerIdentity }: { loggerIdentity: string },
-    signer: Signer | Signer[]
+    signer: Signer | Signer[],
+    commitment: Commitment = "confirmed"
 ) {
     let signers: Signer[] = [];
     if (!Array.isArray(signer)) {
@@ -62,12 +67,12 @@ export async function sendTransaction(
         transaction,
         signers
     );
-    console.log(loggerIdentity, txHash);
+    console.log(loggerIdentity, `https://explorer.solana.com/tx/${txHash}?cluster=custom&customUrl=${provider.connection.rpcEndpoint}`);
     console.log("waiting for transaction...");
     await provider.connection.confirmTransaction({
         ...block,
         signature: txHash,
-    });
-    console.info(loggerIdentity, txHash);
+    }, commitment);
+    console.info(loggerIdentity, "Transaction is", commitment);
     return txHash;
 }
