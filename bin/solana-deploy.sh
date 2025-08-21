@@ -14,6 +14,6 @@ solana program deploy \
   --max-len 501520 \
   --max-sign-attempts 1000 \
   --with-compute-unit-price 100 \
-  --program-id target/deploy/payment_gpu_marketplace-keypair.json \
+  --program-id keys/2025-08-21.stg-program.json \
   --keypair keys/deployer.json \
   target/deploy/payment_gpu_marketplace.so

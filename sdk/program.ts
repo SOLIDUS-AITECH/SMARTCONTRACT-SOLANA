@@ -12,7 +12,7 @@ import { Transaction, TransactionInstruction } from "@solana/web3.js";
 import { IDL } from "./payment_gpu_marketplace";
 
 export const PROGRAM_ID = new PublicKey(
-    "BV7ZPynu7mnNKP2RNhVsqxXSfEsuZLcx1xfvsZ5z63UU"
+    "FcCaVVv6D57CjEAKAPWuBB2iPA1qebPE68CdmzMTBhmy"
 );
 
 export const connection = new Connection("https://api.devnet.solana.com");
