@@ -2,7 +2,7 @@ import { BN, Program } from "@coral-xyz/anchor";
 import { PaymentGpuMarketplace } from "../payment_gpu_marketplace";
 import { PublicKey, SystemProgram } from "@solana/web3.js";
 import { getAuthorityPda, getConfigPda, getProgramTokenVaultPda } from "../pda";
-import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import { createAssociatedTokenAccountInstruction, getAccount, getAssociatedTokenAddressSync, getOrCreateAssociatedTokenAccount, TOKEN_PROGRAM_ID } from "@solana/spl-token";
 
 export async function emergencyWithdraw(
     program: Program<PaymentGpuMarketplace>,
@@ -20,7 +20,23 @@ export async function emergencyWithdraw(
         configData.aitechToken
     )[0];
 
-    const ix = await program.methods
+    const signerAta = getAssociatedTokenAddressSync(
+        configData.aitechToken,
+        signer
+    );
+    let instruction = [];
+    try {
+        await getAccount(program.provider.connection, signerAta);
+    } catch (error) {
+        instruction.push(createAssociatedTokenAccountInstruction(
+            signer,
+            signerAta,
+            signer,
+            configData.aitechToken,
+        ));
+    }
+
+    instruction.push(await program.methods
         .emergencyWithdraw(args.amountAitech)
         .accounts({
             signer: signer,
@@ -29,12 +45,15 @@ export async function emergencyWithdraw(
             config: configPda,
             aitechToken: configData.aitechToken,
             aitechTokenProgram: TOKEN_PROGRAM_ID,
-            feeWallet: configData.feeWallet,
+            signerWallet: signerAta,
             systemProgram: SystemProgram.programId,
         })
-        .instruction();
+        .instruction());
+    
+
+    
     return {
-        instruction: ix,
+        instruction: instruction,
         configPda: configPda,
     };
 }

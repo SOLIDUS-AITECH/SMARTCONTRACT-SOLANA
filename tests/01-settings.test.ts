@@ -1300,7 +1300,7 @@ describe("01. Payment:settings test", async function () {
                     { amountAitech: amountAitech }
                 );
             await expectIxToSucceed(
-                [transferAitechIx, emergencyWithdrawIx],
+                [transferAitechIx, ...emergencyWithdrawIx],
                 [OWNER_KEYPAIR]
             );
             const postOwnerAitechBalance = await getAccount(
@@ -1309,7 +1309,10 @@ describe("01. Payment:settings test", async function () {
             );
 
             expect(postOwnerAitechBalance.amount).to.be.equal(
-                preOwnerAitechBalance.amount - BigInt(amountAitech.toString())
+                preOwnerAitechBalance.amount
+                    // because using owner to transfer and receive, expect balance no changes
+                    // - BigInt(amountAitech.toString())
+                    // + BigInt(amountAitech.toString())
             );
         });
 

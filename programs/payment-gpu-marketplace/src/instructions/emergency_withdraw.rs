@@ -46,11 +46,11 @@ pub struct EmergencyWithdraw<'info> {
 
 	#[account(
 			mut,
-      constraint = fee_wallet.mint == config.aitech_token.key() &&
-				config.fee_wallet == fee_wallet.key()
+      constraint = signer_wallet.mint == config.aitech_token.key() &&
+				signer_wallet.owner == signer.key()
 				@ PaymentGpuMarketplaceErrorCode::InvalidAddress,
   )]
-	pub fee_wallet: Account<'info, TokenAccount>,
+	pub signer_wallet: Account<'info, TokenAccount>,
 
 	pub system_program: Program<'info, System>,
 }
@@ -75,7 +75,7 @@ pub fn handler(ctx: Context<EmergencyWithdraw>, amount: u64) -> Result<()> {
 	transfer_from_pool_vault_to_user(
 		ctx.accounts.authority.to_account_info(),
 		ctx.accounts.program_token_vault.to_account_info(),
-		ctx.accounts.fee_wallet.to_account_info(),
+		ctx.accounts.signer_wallet.to_account_info(),
 		ctx.accounts.aitech_token.to_account_info(),
 		ctx.accounts.aitech_token_program.to_account_info(),
 		amount,

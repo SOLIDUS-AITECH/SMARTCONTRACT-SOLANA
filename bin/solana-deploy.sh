@@ -7,13 +7,16 @@
 ## Read more at: https://solana.com/docs/programs/deploying
 ## ls -lh target/deploy/<program>.so
 
+RPC_URL=$1
+PROGRAM_ID=$2
+DEPLOYER_KEYPAIR=$3
 
 solana program deploy \
-  --url https://api.devnet.solana.com \
+  --url $RPC_URL \
   --use-rpc \
   --max-len 501520 \
   --max-sign-attempts 1000 \
   --with-compute-unit-price 100 \
-  --program-id keys/2025-08-21.stg-program.json \
-  --keypair keys/deployer.json \
+  --program-id $PROGRAM_ID \
+  --keypair $DEPLOYER_KEYPAIR \
   target/deploy/payment_gpu_marketplace.so

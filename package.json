@@ -4,8 +4,10 @@
         "lint": "prettier */*.js \"*/**/*{.js,.ts}\" --check",
         "test": "anchor test --provider.cluster localnet",
         "build": "anchor build && cp target/types/payment_gpu_marketplace.ts sdk/payment_gpu_marketplace.ts",
-        "deploy": "bin/solana-deploy.sh",
-        "script:emergency-withdraw": "ts-node client/withdraw.ts"
+        "deploy:dev": "bin/solana-deploy.sh https://api.devnet.solana.com keys/2025-08-05.dev-program.json keys/deployer.json",
+        "deploy:stg": "bin/solana-deploy.sh https://api.devnet.solana.com keys/2025-08-21.stg-program.json keys/deployer.json",
+        "deploy:mainnet": "bin/solana-deploy.sh https://api.mainnet-beta.solana.com keys/2025-08-21.mainnet-program.json keys/deployer.json",
+        "script:emergency-withdraw": "ts-node client/emergencyWithdraw.ts"
     },
     "dependencies": {
         "@coral-xyz/anchor": "^0.29.0",

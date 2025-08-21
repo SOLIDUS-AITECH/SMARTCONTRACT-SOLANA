@@ -446,7 +446,7 @@ export type PaymentGpuMarketplace = {
           "isSigner": false
         },
         {
-          "name": "feeWallet",
+          "name": "signerWallet",
           "isMut": true,
           "isSigner": false
         },
@@ -1349,7 +1349,7 @@ export const IDL: PaymentGpuMarketplace = {
           "isSigner": false
         },
         {
-          "name": "feeWallet",
+          "name": "signerWallet",
           "isMut": true,
           "isSigner": false
         },

@@ -1,6 +1,6 @@
 export * from "./initialize";
 export * from "./deposit";
-export * from "./emergencyWithdraw";
+export * from "./emergency_withdraw";
 export * from "./pause";
 export * from "./set_burn_rate";
 export * from "./set_fee_rate";
